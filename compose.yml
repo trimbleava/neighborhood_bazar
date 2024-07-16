@@ -11,8 +11,8 @@ services:
       - PG_DB=${POSTGRES_DB}
       - PG_PORT=${POSTGRES_PORT}
       - PG_HOST=bazar_db
-    networks:
-      - tekstack-shared-network
+#    networks:
+#      - tekstack-shared-network
     depends_on:
       - bazar_db
   #
@@ -23,8 +23,8 @@ services:
       volumes:
         - ${TENANT_DATA}/bazar_data:/var/lib/postgresql/data
         - ${TENANT_BKUP}/bazar_backup:/backups
-      networks:
-        - tekstack-shared-network
+#      networks:
+#        - tekstack-shared-network
       env_file: .env
       environment:
         - POSTGRES_USER=${POSTGRES_USER}
@@ -40,6 +40,6 @@ volumes:
   bazar_backups:
     external: true
 
-networks:
-  tekstack-shared-network:
-    external: true
+#networks:
+#  tekstack-shared-network:
+#    external: true
