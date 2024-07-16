@@ -1,0 +1,45 @@
+services:
+  bazarapp:
+    container_name: bazarapp_container
+    build: .
+    ports:
+      - "8003:8000"
+    env_file: .env
+    environment:
+      - PG_USER=${POSTGRES_USER}
+      - PG_PASSWORD=${POSTGRES_PW}
+      - PG_DB=${POSTGRES_DB}
+      - PG_PORT=${POSTGRES_PORT}
+      - PG_HOST=bazar_db
+    networks:
+      - tekstack-shared-network
+    depends_on:
+      - bazar_db
+  #
+  # https://hub.docker.com/_/postgres
+  bazar_db:
+      image: postgres:16
+      container_name: bazardb_container
+      volumes:
+        - ${TENANT_DATA}/bazar_data:/var/lib/postgresql/data
+        - ${TENANT_BKUP}/bazar_backup:/backups
+      networks:
+        - tekstack-shared-network
+      env_file: .env
+      environment:
+        - POSTGRES_USER=${POSTGRES_USER}
+        - POSTGRES_PASSWORD=${POSTGRES_PW}
+        - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+      ports:
+        - "5433:5432"
+      restart: always
+#
+volumes:
+  bazar_data:
+    external: true
+  bazar_backups:
+    external: true
+
+networks:
+  tekstack-shared-network:
+    external: true

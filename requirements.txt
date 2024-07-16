@@ -1,0 +1,7 @@
+djangorestframework==3.15.1   # django-5.0.6
+django-admin-cli
+pytz
+tzdata
+python-dotenv
+pillow
+psycopg2
