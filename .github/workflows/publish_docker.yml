@@ -62,7 +62,7 @@ jobs:
           file_name: .env
       - name: Build dockers
         run: |
-          docker compose -f ../compose.yml up -d
+          docker compose -f compose.yml up -d
 
 
 # CMD tail -f /dev/null
