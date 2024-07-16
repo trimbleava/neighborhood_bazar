@@ -16,23 +16,23 @@ env:
   REPO_NAME: ${{ github.repository }}
   IMAGE_NAME: tek24-bazar
   #
-  TENANT_DATA: "C:/Users/BT/PROJECTS/TENANT_DATA"
-  TENANT_BKUP: "C:/Users/BT/PROJECTS/TENANT_BKUP"
-  SECRET_KEY: 5(15ds+i2+%ik6z&!yer+ga9m=e%jcqiz_5wszg)r-z!2--b2d
+#  TENANT_DATA: "C:/Users/BT/PROJECTS/TENANT_DATA"
+#  TENANT_BKUP: "C:/Users/BT/PROJECTS/TENANT_BKUP"
+#  SECRET_KEY: 5(15ds+i2+%ik6z&!yer+ga9m=e%jcqiz_5wszg)r-z!2--b2d
   #
-  POSTGRES_USER: postgres
-  POSTGRES_PW: postgres
-  POSTGRES_DB: postgres
-  POSTGRES_HOST: 127.0.0.1
-  POSTGRES_BKUP_HOST: 127.0.0.1
-  POSTGRES_HOST_AUTH_METHOD: trust
+#  POSTGRES_USER: postgres
+#  POSTGRES_PW: postgres
+#  POSTGRES_DB: postgres
+#  POSTGRES_HOST: 127.0.0.1
+#  POSTGRES_BKUP_HOST: 127.0.0.1
+#  POSTGRES_HOST_AUTH_METHOD: trust
   #
-  PGADMIN_MAIL: beheenmt@gmail.com
-  PGADMIN_PW: pgadmin
+#  PGADMIN_MAIL: beheenmt@gmail.com
+#  PGADMIN_PW: pgadmin
   #
-  POSTGRES_MAJOR_VERSION: 16
-  POSTGIS_MAJOR_VERSION: 3
-  POSTGIS_MINOR_RELEASE: 4
+#  POSTGRES_MAJOR_VERSION: 16
+#  POSTGIS_MAJOR_VERSION: 3
+#  POSTGIS_MINOR_RELEASE: 4
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
   build:
