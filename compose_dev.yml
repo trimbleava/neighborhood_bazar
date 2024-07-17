@@ -4,7 +4,7 @@ services:
     build: .
     ports:
       - "8003:8000"
-    env_file: .env
+    env_file: .env_dev
     environment:
       - PG_USER=${POSTGRES_USER}
       - PG_PASSWORD=${POSTGRES_PW}
@@ -21,11 +21,11 @@ services:
       image: postgres:16
       container_name: bazardb_container
       volumes:
-        - ${TENANT_DATA}/bazar_data:/var/lib/postgresql/data
-        - ${TENANT_BKUP}/bazar_backup:/backups
+        - ./bazar_data:/var/lib/postgresql/data
+        - ./bazar_backup:/backups
 #      networks:
 #        - tekstack-shared-network
-      env_file: .env
+      env_file: .env_dev
       environment:
         - POSTGRES_USER=${POSTGRES_USER}
         - POSTGRES_PASSWORD=${POSTGRES_PW}
@@ -36,9 +36,7 @@ services:
 #
 volumes:
   bazar_data:
-    external: true
   bazar_backups:
-    external: true
 
 #networks:
 #  tekstack-shared-network:
