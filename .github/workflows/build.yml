@@ -18,10 +18,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Run docker-compose
+      - name: Run docker compose
         env:
           var: "test"
         run: |
           echo ---Building and starting up database docker---
-          docker compose -f compose.yml up -d bazar_db
+          docker compose -f compose_dev.yml up -d bazar_db
           echo ---Containers up---
