@@ -16,13 +16,18 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
+      # When using a container to run the checkout, the variables ${{ GITHUB_WORKSPACE }} and ${{ github.workspace }}
+      # are different.
       - uses: actions/checkout@v3
+      - name: checking workspace
+        run: |
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
       - name: Run docker compose
         env:
           var: "test"
         run: |
           echo ---Building and starting up database docker---
-          echo ${{ github.workspace }}
           docker compose -f compose_dev.yml up -d bazar_db
           echo ---Containers up---
