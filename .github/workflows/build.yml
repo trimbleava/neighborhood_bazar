@@ -23,5 +23,6 @@ jobs:
           var: "test"
         run: |
           echo ---Building and starting up database docker---
+          echo ${{ github.workspace }}
           docker compose -f compose_dev.yml up -d bazar_db
           echo ---Containers up---
