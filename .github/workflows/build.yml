@@ -15,18 +15,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container:
-      # As we would be utilising docker commands to spin up the containers, we need to run the environment using an
-      # image lucasalt/act_base created by LucasCtrl. Without this, we will not be able to run docker-compose which
-      # is required to spin up the containers.
-      image: lucasalt/act_base:latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          path: "neighborhood_bazar"
-      - name: Build docker
-        run: | 
-          echo ---Building and starting up docker---
-          docker-compose -f neighborhood_bazar/compose.yml up -d bazar_db
+      - uses: actions/checkout@v3
+      - name: Run docker-compose
+        env:
+          var: "test"
+        run: |
+          echo ---Building and starting up database docker---
+          docker compose -f compose.yml up -d bazar_db
           echo ---Containers up---
