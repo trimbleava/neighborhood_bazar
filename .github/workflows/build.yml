@@ -28,6 +28,5 @@ jobs:
       - name: Build docker
         run: | 
           echo ---Building and starting up docker---
-          docker compose -f ./<REPO_NAME>/docker-compose.test.yml -p testing up -d
           docker compose --env-file ${{ env.REPO_NAME}}/.env -f ${{ env.REPO_NAME}}/compose.yml up -d bazar_db
           echo ---Containers up---
