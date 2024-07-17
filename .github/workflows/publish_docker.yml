@@ -41,7 +41,10 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           file_name: .env
+        run: |
+          echo ${{ github.workspace }}
+          echo $GITHUB_ENV
       - name: Build dockers
         run: |
-          docker compose -f compose.yml up -d bazar_db
-          docker compose -f compose.yml up
+          docker compose --env-file .env -f compose.yml up -d bazar_db
+          docker compose --env-file .env -f compose.yml up
