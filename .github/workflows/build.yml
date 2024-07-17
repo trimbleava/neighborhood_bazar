@@ -6,6 +6,11 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ develop ] # to change to develop
+# registry domain, and a name for the Docker image that this workflow builds.
+env:
+  REGISTRY: ghcr.io
+  REPO_NAME: ${{ github.repository }}
+  IMAGE_NAME: bazar-dev
 jobs:
   build:
     # The type of runner that the job will run on
