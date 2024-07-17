@@ -18,4 +18,5 @@ COPY . .
 EXPOSE 8000
 
 # entrypoint to run the django.sh file
+RUN chmod +x /app/django.sh
 ENTRYPOINT ["/app/django.sh"]
