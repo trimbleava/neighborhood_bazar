@@ -23,7 +23,7 @@ jobs:
       - name: checking workspace
         run: |
           echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
+          echo ${{ GITHUB_WORKSPACE }}
       - name: Run docker compose
         env:
           var: "test"
