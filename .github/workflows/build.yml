@@ -1,11 +1,11 @@
 # https://faun.pub/building-a-ci-cd-pipeline-with-github-actions-and-docker-part-1-a9d8709c31fb
-name: CI-dev-pipeline
+name: CI-dev-pipeline - Unfinished
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [ develop ]
+    branches: [ release ]
   pull_request:
-    branches: [ develop ] # to change to develop
+    branches: [ release ] # to change to develop
 # registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
@@ -18,14 +18,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
       # When using a container to run the checkout, the variables ${{ GITHUB_WORKSPACE }} and ${{ github.workspace }}
-      # are different.
+      # are different. Not sure! Both return: /home/runner/work/neighborhood_bazar/neighborhood_bazar
       - uses: actions/checkout@v3
       - name: Run docker compose
         env:
           var: "test"
         run: |
-          echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
           echo ---Building and starting up database docker---
           docker compose -f compose_dev.yml up -d bazar_db
           echo ---Containers up---

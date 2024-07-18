@@ -2,42 +2,54 @@ services:
   bazarapp:
     container_name: bazarapp_container
     build: .
-    ports:
-      - "8003:8000"
-    env_file: .env_dev
+    env_file: local.env
     environment:
       - PG_USER=${POSTGRES_USER}
       - PG_PASSWORD=${POSTGRES_PW}
       - PG_DB=${POSTGRES_DB}
-      - PG_PORT=${POSTGRES_PORT}
+      - PG_PORT=5432
       - PG_HOST=bazar_db
-#    networks:
-#      - tekstack-shared-network
+    ports:
+      - "8003:8000"
     depends_on:
       - bazar_db
-  #
   # https://hub.docker.com/_/postgres
   bazar_db:
       image: postgres:16
       container_name: bazardb_container
       volumes:
-        - ./bazar_data:/var/lib/postgresql/data
-        - ./bazar_backup:/backups
-#      networks:
-#        - tekstack-shared-network
-      env_file: .env_dev
+        - ../bazar_data:/var/lib/postgresql/data
+      env_file: local.env
       environment:
         - POSTGRES_USER=${POSTGRES_USER}
         - POSTGRES_PASSWORD=${POSTGRES_PW}
-        - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+        - POSTGRES_DB=${POSTGRES_DB}
       ports:
-        - "5433:5432"
+        - "8004:5432"
       restart: always
+  #
+  bazar_backups:
+    env_file: local.env
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    user: postgres:postgres # Optional: see below
+    volumes:
+      - ../bazar_backups:/backups
+    environment:
+      - POSTGRES_HOST=${POSTGRES_BKUP_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      #  - POSTGRES_PASSWORD_FILE=/run/secrets/db_password <-- alternative for POSTGRES_PASSWORD (to use with docker secrets)
+      - POSTGRES_EXTRA_OPTS=-Z1 --schema=public --blobs
+      - SCHEDULE=@daily
+      - BACKUP_KEEP_DAYS=7
+      - BACKUP_KEEP_WEEKS=4
+      - BACKUP_KEEP_MONTHS=6
+      - HEALTHCHECK_PORT=8080
+    depends_on:
+      - bazar_db
 #
 volumes:
   bazar_data:
   bazar_backups:
-
-#networks:
-#  tekstack-shared-network:
-#    external: true
