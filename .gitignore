@@ -6,6 +6,15 @@ __pycache__/
 # C extensions
 *.so
 
+# django
+static/
+staticfiles/
+.idea/
+customer_del/
+dev.env
+local.env
+
+
 # Distribution / packaging
 .Python
 env/

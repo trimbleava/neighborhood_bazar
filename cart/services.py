@@ -1,11 +1,8 @@
-
 from decimal import Decimal
-
 from django.conf import settings
 
-from .serializers import ProductSerializer
-from .models import Product
-
+from product.models import Product
+from product.serializers import ProductSerializer
 
 class Cart:
     def __init__(self, request):

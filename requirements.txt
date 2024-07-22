@@ -5,3 +5,15 @@ tzdata
 python-dotenv
 pillow
 psycopg2
+django-bootstrap5
+#
+markdown
+django-filter
+djangorestframework-simplejwt
+django-versatileimagefield
+python-magic-bin==0.4.14
+drf-flex-fields
+django-cors-headers
+#
+django-allauth
+exarth-rest-auth
