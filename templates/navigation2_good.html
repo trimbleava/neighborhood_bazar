@@ -1,0 +1,32 @@
+{% load static %}
+{% load template_tags %}
+
+<nav id="nav2" class="navbar navbar-light navbar-expand-sm border-top-0 border border-1">
+    <!-- do not use fixed-top, loosing scrolling and the 2nd navbar -->
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav flex-fill me-auto anton-sc-regular">
+                <li class="nav-item">
+                    <a class="nav-link  {% navactive request 'menu-list' %}" aria-current="page"
+                        href="{% url 'menu-list' %}">menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {% navactive request 'kitchen-list' %}" aria-current="page"
+                        href="{% url 'kitchen-list' %}">kitchen</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link  {% navactive request 'store-list' %}" aria-current="page"
+                        href="{% url 'store-list' %}">store</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ms-auto vr"></div>
+        <div class="shopping-cart position-relative px-3">
+            <a href="#" title="">
+                <i class="fa fa-shopping-cart" aria-hidden="true" style="color: #3A833A">
+                    <span class="cart-total anton-sc-regular">$&nbsp;0.00</span>
+                </i>
+            </a>
+        </div>
+    </div>
+</nav>

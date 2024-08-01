@@ -4,6 +4,10 @@ from versatileimagefield.fields import VersatileImageField, PPOIField
 
 class Company(models.Model):
     # https://medium.com/django-rest/lets-build-a-basic-product-review-backend-with-drf-part-1-652dd9b95485
+    """
+    The neighbor house number prefixed by an N (i.e. N7280)
+    url: the house address link on the map for now.
+    """
     name = models.CharField(max_length=255)
     url = models.TextField()
 
@@ -12,6 +16,9 @@ class Company(models.Model):
 
 
 class ProductSize(models.Model):
+    """
+
+    """
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -19,6 +26,10 @@ class ProductSize(models.Model):
 
 
 class Category(models.Model):
+    """
+    food
+    ???
+    """
     name = models.CharField(max_length=255)
 
     def __str__(self):

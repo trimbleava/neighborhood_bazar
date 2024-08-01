@@ -1,0 +1,25 @@
+<!-- templates/copyright.html -->
+{% extends "base.html" %}
+{% load static %}
+{% load copyright %}
+
+
+{% block title %}Copyright - {{ block.super }}{% endblock %}
+
+{% block footer-content %}
+<!-- Copyright -->
+    <div class="text-center border-top p-3" id="footer-copyright">
+        <p>&copy;{% getCopyrightYears %}Neighborhood Bazaar LLC, Powered by Tek2024 Inc. <br>
+        All rights reserved<br>
+        Address: 7280 Pioneer Lakes Circle, West Palm Beach, Florida, 33413<br>
+            Phone: (561) 232-5703 - Email: yourneighbor@neighborhoodbazaar.com</p>
+
+        <p class="text-center fw-bold" style="color: #a99a86">
+            License Number: MA 74867 &nbsp;| &nbsp; MM 43632
+        </p>
+
+        <a class="fw-bold" href="#"> View our Privacy Policy</a>
+    </div>
+    <!-- Copyright -->
+{% endblock %}
+

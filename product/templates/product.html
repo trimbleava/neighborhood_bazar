@@ -1,0 +1,25 @@
+<!-- templates/product.html -->
+{% extends "base.html" %}
+{% block title %}Products - {{ block.super }}{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div id="" class="container-fluid mx-3 px-2">
+    <div class="row">
+        <div class="col-3">
+            <a class="nav-link" href="product">food1</a>
+        </div>
+        <div class="col-3">
+            <a class="nav-link" href="product">food2</a>
+        </div>
+        <div class="col-3">
+            <a class="nav-link" href="product">food3</a>
+        </div>
+        <div class="col-3">
+            <a class="nav-link" href="product">food4</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

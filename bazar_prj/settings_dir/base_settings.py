@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 """Base settings shared by all environments"""
 # if you need to override something do it in local_settings.py
@@ -28,7 +28,9 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    # 'rest_framework',
+    'rest_framework',
+    'django_filters',
+    'versatileimagefield',
     # 'crispy_forms',
     # 'compressor',
     # 'mptt',
@@ -37,9 +39,12 @@ THIRD_PARTY_APPS = (
     # 'djgeojson',
 )
 
+COPY_START_YEAR = 2024
+
 MY_APPS = (
     'users',
     'pages',
+    'product'
 )
 
 INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + MY_APPS
@@ -72,7 +77,7 @@ STATICFILES_DIRS = [
     "media", os.path.join(BASE_DIR, "media" ),
     "static", os.path.join(BASE_DIR, "static" )
 ]
-
+print(BASE_DIR)
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
@@ -117,12 +122,17 @@ TEMPLATES = [
                 # 'gui.context_processors.navaccount_processor',
                 # 'umap.context_processors.settings',  example- free software
             ],
+            # "loaders": [
+            #     "django.template.loaders.filesystem.Loader",
+            #     "django.template.loaders.app_directories.Loader",
+            # ],
             'libraries': {
                 # Alternatively, template tag modules can be registered through the 'libraries'
                 # argument to DjangoTemplates. This is useful if you want to use a different label
                 # from the template tag module name when loading template tags. It also enables you
-                # to register tags without installing an application. I did not need to do this here.
-                # 'template_tags': 'gui.templatetags.tags_extra',
+                # to register tags without installing an application.
+                # url: https://pypi.org/project/django-copyright/
+                'template_tags': 'pages.templatetags.tags_extra',
             },
         },
     },
@@ -206,10 +216,26 @@ USE_L10N = True
 LANGUAGE_CODE = 'en'
 
 AUTH_USER_MODEL = "users.CustomUser"
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = 'login'
 # ENABLE_ACCOUNT_LOGIN = True
 # AUTHENTICATION_BACKENDS += ()
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+}
+
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'product_headshot': [
+        ('full_size', 'url'),
+        ('thumbnail', 'thumbnail__100x100'),
+        ('medium_square_crop', 'crop__400x400'),
+        ('small_square_crop', 'crop__50x50')
+    ]
+}

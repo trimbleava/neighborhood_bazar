@@ -1,0 +1,15 @@
+<!-- templates/menu_items.html -->
+{% extends "base.html" %}
+{% block title %}Menu - {{ block.super }}{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div id="menu-items-content" class="container-fluid  mx-3 px-2">
+   <div class="d-grid gap-2 d-md-block">
+  <button class="btn btn-primary" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
+</div>
+
+{% endblock %}

@@ -1,7 +1,34 @@
 <!-- templates/about.html -->
 {% extends "base.html" %}
-{% block title %}About{% endblock title %}
+{% block title %}About - {{ block.super }}{% endblock %}
+{% load static %}
 
 {% block content %}
-    <h1>About Page</h1>
+
+<div id="about-content" class="container-fluid">
+    <div class="row">
+        <!-- about us -->
+        <div class="col-sm-12 mb-4">
+            <!-- p class="text-uppercase fw-bold mb-4 text-center" style="color: #3A833A;">About Us</p> -->
+            <p class="title-font mb-4">ABOUT US</p>
+            <p class="">We are a family caring for healthy nutrition. We are retired enjoing the rest of our lives by ..
+               We are constantly researching and verifying the nutrition facts.
+               We beleive in fresh food - so we shop 2 times a week - we cook after receiving order from previous day to never lose quality of our foods we only can serve so many people a day. That is why the eneighborhood
+               We accept orders for occassions during which we only are open to the occasion.
+                We do in our place catering, for any ocassion including weddings where you have option to select your food.
+            </p>
+            <p>we have a stor where we make other commodities. If you have something to sell in our neighborhood bazaar
+            we add it to this stor for sell. honey, turshy, yogourth , cackes, pastries (as healthy as possible)
+            </p>
+            <p>we deliver in our neighborhood, or you could save your food in our refrigerator for the next day pick up or delivery.</p>
+            <p class="">
+                we are licenced by the food and administration .... Our license number is
+              License Number: MA 74867 &nbsp;| &nbsp; MM 43632
+                Our kitchen is open for visit to our customers at any time during our working hours.
+            </p>
+            <p>Meet our chefs</p>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

@@ -1,0 +1,21 @@
+<!-- templates/menu_items.html -->
+{% extends "base.html" %}
+{% block title %}Menu - {{ block.super }}{% endblock %}
+{% load static %}
+{% load template_tags %}
+
+{% block content %}
+
+<div id="menu-items-content" class="container-fluid  mx-3 px-2">
+  h1>Menu List</h1>
+<ul>
+{% for menu in object_list %}
+    <p>{{ menu.today }}</p>
+    <li>{{ menu.name }}</li>
+{% empty %}
+    <li>No menu yet.</li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock %}

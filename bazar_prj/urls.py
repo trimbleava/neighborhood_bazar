@@ -5,7 +5,7 @@ from django.views.defaults import (permission_denied,
                                    page_not_found,
                                    server_error)
 from django.urls import path, include, re_path
-from django.views.generic.base import TemplateView
+
 
 # customize admin page
 admin.site.site_header = 'Neighborhood Bazaar Admin Page'
@@ -21,6 +21,7 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("users/", include("django.contrib.auth.urls")),
     path('', include('pages.urls')),
+    path("product", include('product.urls'))
 ]
 
 if settings.DEBUG:

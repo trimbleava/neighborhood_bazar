@@ -1,8 +1,12 @@
 <!-- templates/home.html -->
 {% extends "base.html" %}
-
-{% block title %}Home{% endblock title %}
+{% block title %}Home - {{ block.super }}{% endblock %}
+{% load static %}
 
 {% block content %}
-<h2>this is home page</h2>
+
+<div id="home-content" class="container-fluid">
+    this is home pagemmmmmmmmmmmmmmm
+</div>
+
 {% endblock %}

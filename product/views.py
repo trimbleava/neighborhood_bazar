@@ -1,3 +1,4 @@
+# product/views.py
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -5,8 +6,13 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_flex_fields.views import FlexFieldsModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import TemplateView
+
 from .serializers import ProductSerializer
 from .serializers import ImageSerializer
+
 from .models import Product
 from .models import Image
 
@@ -48,3 +54,7 @@ class ProductAPI(APIView):
             status=status.HTTP_201_CREATED
         )
 
+
+# Create your views here.
+class ProductPageView(TemplateView):
+    template_name = "product.html"

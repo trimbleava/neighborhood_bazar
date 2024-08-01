@@ -1,7 +1,34 @@
-<footer class="footer fixed-bottom bg-body-tertiary m-2">
-    <div class="container text-center">
-        <span class="text-black">
-            This is the sticky footer.
-        </span>
+{% load static %}
+{% load template_tags %}
+
+<!-- Footer -->
+<footer class="footer footer-font border border-1">
+    <div class="row px-3 py-2">
+        <!-- contact us -->
+        <div class="col-sm-12 col-md-6 mb-2">
+            <p class="text-uppercase text-center fw-bold mb-4" style="color: #3A833A;">Contact</p>
+            <p><i class="fas fa-home me-3"></i> 7280 Pioneer Lakes Circle, West Palm Beach, Fl. 33413, USA</p>
+            <p>
+                <i class="fas fa-envelope me-3"></i>
+                contact@neighborhoodbazzar.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> (561) 232 - 5703 | (561) 818 - 3573</p>
+            <p>Please email any display problem with the name of your web browser and the size or brand of your cellphone/laptop/desktop</p>
+        </div>
+        <!-- site map -->
+        <div class="col-sm-12 col-md-6 mb-2 loc-map">
+            <p class="text-uppercase text-center fw-bold mb-4" style="color: #3A833A;">Site Map</p>
+            <!-- enter address into google map, share > Embed a map > copy html code -->
+            <!-- note: for some reason, having w/h both in here and in css works better than removing w/h from here -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.2499007938445!2d-80.16394742478442!3d26.672488976791126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d928ebd8de92fd%3A0x99a918e0a82a7eaf!2s7280%20Pioneer%20Rd%2C%20West%20Palm%20Beach%2C%20FL%2033413!5e0!3m2!1sen!2sus!4v1722197376948!5m2!1sen!2sus"
+                    width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <br>
+    <!-- Copyright -->
+    <div class="text-center mb-2">
+        © 2024 Neighborhood Bazaar Inc. All rights reserved<br>
+        <a class="" href="https://tek24.com/">Powered by Tek24 LLC</a><br>
     </div>
 </footer>
+
